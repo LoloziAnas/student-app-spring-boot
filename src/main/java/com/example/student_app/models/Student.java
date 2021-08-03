@@ -1,22 +1,25 @@
 package com.example.student_app.models;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.web.bind.annotation.RestController;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class Student {
+@ToString @Getter @Setter
+public class Student implements Serializable {
 
     private Long id;
     private String name;
-    private Integer age;
+    private String email;
     private LocalDate birthday;
+    private Integer age;
 
-    public Student(String name, Integer age, LocalDate birthday) {
+    public Student(String name, String email, LocalDate birthday, Integer age) {
         this.name = name;
-        this.age = age;
+        this.email = email;
         this.birthday = birthday;
+        this.age = age;
     }
 }
