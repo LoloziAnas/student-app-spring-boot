@@ -1,7 +1,6 @@
 package com.example.student_app.models;
 
 import lombok.*;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.*;
 import java.io.Serializable;
