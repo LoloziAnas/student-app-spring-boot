@@ -2,12 +2,13 @@ package com.example.student_app.services;
 
 import com.example.student_app.dao.StudentRepository;
 import com.example.student_app.models.Student;
-import jdk.nashorn.internal.runtime.options.Option;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -31,5 +32,20 @@ public class StudentService {
         boolean exists = studentRepository.existsById(studentID);
         if (!exists) throw new IllegalStateException("Student ID "+studentID+" doesn't exists");
         this.studentRepository.deleteById(studentID);
+    }
+    @Transactional
+    public void updateStudent(Long studentID, String name, String email){
+        Student student = studentRepository.findById(studentID)
+                .orElseThrow(() -> new IllegalStateException("Student id doesn't exists"));
+        if (name != null && !Objects.equals(student.getName(), name)){
+            student.setName(name);
+        }
+        if (email != null && !Objects.equals(student.getEmail(), email)){
+            Optional<Student> optionalStudent = studentRepository.findStudentByEmail(email);
+            if (optionalStudent.isPresent())
+                throw new IllegalStateException("email taken");
+            student.setEmail(email);
+        }
+
     }
 }
