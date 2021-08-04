@@ -11,17 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
-@RestController
 public class StudentAppApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(StudentAppApplication.class, args);
     }
 
-    @GetMapping
-    public List<Student> hello(){
-        ArrayList<Student> students = new ArrayList<>();
-        students.add( new Student("Anas", "anas@gmail.com", LocalDate.of(2000,4,4), 44));
-        return students;
-    }
+
 }
