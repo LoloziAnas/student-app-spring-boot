@@ -7,7 +7,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString @Getter @Setter
 @Table @Entity
 public class Student implements Serializable {
