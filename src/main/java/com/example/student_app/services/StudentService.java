@@ -1,6 +1,8 @@
 package com.example.student_app.services;
 
+import com.example.student_app.dao.StudentRepository;
 import com.example.student_app.models.Student;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -9,9 +11,12 @@ import java.util.List;
 
 @Service
 public class StudentService {
+    final StudentRepository studentRepository;
+    @Autowired
+    public StudentService(StudentRepository studentRepository){
+        this.studentRepository = studentRepository;
+    }
     public List<Student> getStudents(){
-        ArrayList<Student> students = new ArrayList<>();
-        students.add( new Student("Anas", "anas@gmail.com", LocalDate.of(2000,4,4), 44));
-        return students;
+        return studentRepository.findAll();
     }
 }
