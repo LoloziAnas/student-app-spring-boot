@@ -31,6 +31,16 @@ public class Student implements Serializable {
         this.birthday = birthday;
     }
 
+    public Student(String name, String email, LocalDate birthday,  Class aClass) {
+        this.name = name;
+        this.email = email;
+        this.birthday = birthday;
+        this.age = age;
+        this.aClass = aClass;
+    }
+
+
+
     public Integer getAge() {
         return Period.between(this.birthday, LocalDate.now()).getYears();
     }

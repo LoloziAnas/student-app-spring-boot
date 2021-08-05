@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Set;
 
-@NoArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 @ToString @Setter @Getter
 @Entity @Table
 public class Class {
@@ -17,10 +17,9 @@ public class Class {
     private String name;
     @Column(length = 5)
     private String abbr; // for Class abbreviation
-    @OneToMany
-    private Set<Student> students;
 
-    public Class(Long id, String name, String abbr) {
+
+    public Class(String name, String abbr) {
         this.id = id;
         this.name = name;
         this.abbr = abbr;
