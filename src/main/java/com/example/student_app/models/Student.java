@@ -21,6 +21,9 @@ public class Student implements Serializable {
     private LocalDate birthday;
     @Transient
     private Integer age;
+    @ManyToOne
+    @JoinColumn(name = "class")
+    private Class aClass;
 
     public Student(String name, String email, LocalDate birthday) {
         this.name = name;
