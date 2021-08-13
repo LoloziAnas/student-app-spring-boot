@@ -1,0 +1,4 @@
+FROM openjdk:8
+ADD target/student_app.jar student_app.ja
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","student_app.jar"]
