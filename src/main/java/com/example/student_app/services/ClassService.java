@@ -19,4 +19,5 @@ public class ClassService {
     public List<Class> getClasses(){
         return this.classRepository.findAll();
     }
+
 }

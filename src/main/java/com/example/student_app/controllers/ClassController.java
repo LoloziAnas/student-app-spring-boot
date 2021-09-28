@@ -13,12 +13,15 @@ import java.util.List;
 @RequestMapping(path = "api/v1/classes")
 public class ClassController {
     final ClassService classService;
-
     @Autowired
     public ClassController(ClassService classService) {
         this.classService = classService;
     }
 
+    @GetMapping	
+    public int getNumberOfClasses() {
+    	return this.classService.getClasses().size();
+    }
     @GetMapping
     public List<Class> getClasses(){
         return this.classService.getClasses();
